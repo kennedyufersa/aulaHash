@@ -1,15 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 typedef struct aluno {
-  int mat;
-  char *nome;
-  char *email;
+    int mat;
+    char *nome;
+    char *email;
 } Aluno;
-
+Aluno* criarAluno(int, const char*, const char*);
 int main(int argc, char *argv[]) {
-  Aluno *aluno = malloc(sizeof *aluno);
-  aluno->mat = 100;
-  aluno->nome = "Kennedy";
-  aluno->email = "kennedy@ufersa.edu.br";
+    Aluno *aluno = malloc(sizeof *aluno);
+    criarAluno(100, "Kennedy", "kennedy@ufersa.edu.br");
 }
+Aluno* criarAluno(int m, const char* nome, const char*email){
+    Aluno* novo = malloc(sizeof *novo);
+    novo->mat = m;
+    novo->nome = nome;
+    novo->email = email;
+    return novo;
+}
+// https://github.com/kennedyufersa/aulaHash
