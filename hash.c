@@ -7,8 +7,8 @@ typedef struct aluno {
 } Aluno;
 Aluno* criarAluno(int, const char*, const char*);
 int main(int argc, char *argv[]) {
-    Aluno *aluno = malloc(sizeof *aluno);
-    criarAluno(100, "Kennedy", "kennedy@ufersa.edu.br");
+    Aluno *aluno;
+    aluno = criarAluno(100, "Kennedy", "kennedy@ufersa.edu.br");
 }
 Aluno* criarAluno(int m, const char* nome, const char*email){
     Aluno* novo = malloc(sizeof *novo);
