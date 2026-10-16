@@ -33,14 +33,14 @@ int main(int argc, char *argv[]) {
   show(hashTable);
 }
 void show(tabela *hash) {
-  Aluno aux;
+  Aluno *aux;
   for (size_t i = 0; i < TAM; i++) {
-    aux = hash->baldes[i]->aluno;
-    if (hash->baldes[i] == NULL) {
+    aux = &(hash->baldes[i]->aluno);
+    if (hash->baldes[i] != NULL) {
       printf("Balde[%lu]: ", i);
-      printf("Matrícula: %d\n", aux.mat);
-      printf("Nome: %s\n", aux.nome);
-      printf("Email: %s\n", aux.email);
+      printf("Matrícula: %d\n", aux->mat);
+      printf("Nome: %s\n", aux->nome);
+      printf("Email: %s\n", aux->email);
     }
   }
 }
