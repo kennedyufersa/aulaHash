@@ -26,10 +26,11 @@ void show(tabela *);
 int inserirAluno(tabela *, Aluno *novo);
 int main(int argc, char *argv[]) {
   tabela *hashTable = criarTabela();
-  Aluno *aluno;
-  aluno = criarAluno(53192120, "Kennedy", "kennedy@ufersa.edu.br");
-  int res = funcHash(aluno);
-  inserirAluno(hashTable, aluno);
+  Aluno *aluno1, *aluno2;
+  aluno1 = criarAluno(53192120, "Kennedy", "kennedy@ufersa.edu.br");
+  aluno2 = criarAluno(53792120, "Lopes", "lopes@ufersa.edu.br");
+  inserirAluno(hashTable, aluno1);
+  inserirAluno(hashTable, aluno2);
   show(hashTable);
 }
 void show(tabela *hash) {
@@ -38,9 +39,13 @@ void show(tabela *hash) {
     aux = &(hash->baldes[i]->aluno);
     if (hash->baldes[i] != NULL) {
       printf("Balde[%lu]: ", i);
-      printf("Matrícula: %d\n", aux->mat);
-      printf("Nome: %s\n", aux->nome);
-      printf("Email: %s\n", aux->email);
+      No* aux2 = &(hash->baldes[i]);
+      while (aux2 != NULL) {
+        printf("Matrícula: %d\n", aux2->aluno->mat);
+        printf("Nome: %s\n", aux2->aluno->nome);
+        printf("Email: %s\n", aux2->aluno->email);
+        
+      }
     }
   }
 }
