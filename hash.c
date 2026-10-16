@@ -8,6 +8,11 @@ typedef struct aluno {
   char *email;
 } Aluno;
 
+typedef struct No{
+    struct No* prox;
+    Aluno aluno;
+}No;
+
 int funcHash(Aluno*);
 
 Aluno *criarAluno(int, const char *, const char *);
