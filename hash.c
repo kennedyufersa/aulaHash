@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
   tabela *hashTable = criarTabela();
   Aluno *aluno1, *aluno2;
   aluno1 = criarAluno(53192120, "Kennedy", "kennedy@ufersa.edu.br");
-  aluno2 = criarAluno(53792125, "Lopes", "lopes@ufersa.edu.br");
+  aluno2 = criarAluno(53192120, "Lopes", "lopes@ufersa.edu.br");
   inserirAluno(hashTable, aluno1);
   inserirAluno(hashTable, aluno2);
   show(hashTable);
@@ -39,7 +39,7 @@ void show(tabela *hash) {
     aux = &(hash->baldes[i]->aluno);
     if (hash->baldes[i] != NULL) {
       printf("Balde[%lu]: \n", i);
-      No* aux2 = (hash->baldes[i]);
+      No *aux2 = (hash->baldes[i]);
       while (aux2 != NULL) {
         printf("Matrícula: %d\n", aux2->aluno.mat);
         printf("Nome: %s\n", aux2->aluno.nome);
@@ -51,12 +51,19 @@ void show(tabela *hash) {
 }
 int inserirAluno(tabela *hashTable, Aluno *novo) {
   int indice = funcHash(novo);
+  No *aux = hashTable->baldes[indice];
+  while (aux != NULL) {
+    if (aux->aluno.mat == novo->mat) {
+      return 0;
+    }
+    aux = aux->prox;
+  }
   // hashTable->baldes[indice]
   No *no = malloc(sizeof *no);
   no->aluno = *novo;
   no->prox = hashTable->baldes[indice];
   hashTable->baldes[indice] = no;
-  return 0;
+  return 1;
 }
 
 tabela *criarTabela() {
