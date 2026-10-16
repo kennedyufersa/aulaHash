@@ -20,11 +20,22 @@ typedef struct tabela {
 
 int funcHash(Aluno *);
 tabela *criarTabela();
-
 Aluno *criarAluno(int, const char *, const char *);
+int inserirAluno(tabela*, Aluno *novo);
 int main(int argc, char *argv[]) {
     tabela* hashTable = criarTabela();
 }
+
+int inserirAluno(tabela* hashTable, Aluno *novo){
+    int indice = funcHash(novo);
+    // hashTable->baldes[indice]
+    No* no = malloc(sizeof *no);
+    no->aluno = *novo;
+    no->prox = hashTable->baldes[indice];
+    hashTable->baldes[indice] = no;
+    return 0;
+}
+
 
 tabela *criarTabela() {
   tabela *res = malloc(sizeof *res);
@@ -36,7 +47,6 @@ tabela *criarTabela() {
 }
 
 int funcHash(Aluno *aluno) { return aluno->mat % TAM; }
-
 Aluno *criarAluno(int m, const char *nome, const char *email) {
     Aluno *novo = malloc(sizeof *novo);
     novo->mat = m;
