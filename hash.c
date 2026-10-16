@@ -76,5 +76,5 @@ Aluno *criarAluno(int m, const char *nome, const char *email) {
   novo->email = strdup(email);
   return novo;
 }
-// Veja se chegou essa comentário
+// Alterei algum coisa
 // https://github.com/kennedyufersa/aulaHash
